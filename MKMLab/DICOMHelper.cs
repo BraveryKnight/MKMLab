@@ -45,8 +45,8 @@ namespace MKMLab
                 d.pixelData = (List<byte>)dcm.FindFirst(TagHelper.PixelData).DData_;
                 d.mask = (ushort)(ushort.MaxValue >> (d.bitsAllocated - d.bitsStored));
                 d.maxval = Math.Pow(2, d.bitsStored);
-                d.width = (double)dcm.FindFirst(TagHelper.WindowWidth).DData;
-                d.center = -(double)dcm.FindFirst(TagHelper.WindowCenter).DData;
+                d.width = Math.Abs((double)dcm.FindFirst(TagHelper.WindowWidth).DData);
+                d.center = Math.Abs((double)dcm.FindFirst(TagHelper.WindowCenter).DData);
                 dataList.Add(d);
             }
 
